@@ -1,0 +1,4 @@
+framework module zVideoUIEx {
+  header "zVideoUIEx-Swift.h"
+  requires objc
+}

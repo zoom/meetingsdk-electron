@@ -1,0 +1,74 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float32",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32 1 × 2 × 1 × 1)",
+        "shortDescription" : "",
+        "shape" : "[1, 2, 1, 1]",
+        "name" : "osd_output",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 6,
+    "mlProgramOperationTypeHistogram" : {
+      "Softmax" : 1,
+      "Concat" : 29,
+      "SliceByIndex" : 28,
+      "Sub" : 1,
+      "AvgPool" : 28,
+      "Relu" : 59,
+      "Mul" : 15,
+      "Sigmoid" : 14,
+      "ReduceMean" : 16,
+      "Add" : 18,
+      "BatchNorm" : 16,
+      "Reshape" : 1,
+      "Tile" : 28,
+      "Conv" : 87,
+      "Sqrt" : 1
+    },
+    "computePrecision" : "Mixed (Float32, Int32)",
+    "isUpdatable" : "0",
+    "stateSchema" : [
+
+    ],
+    "availability" : {
+      "macOS" : "12.0",
+      "tvOS" : "15.0",
+      "visionOS" : "1.0",
+      "watchOS" : "8.0",
+      "iOS" : "15.0",
+      "macCatalyst" : "15.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.version" : "8.0",
+      "com.github.apple.coremltools.source" : "torch==2.5.1",
+      "com.github.apple.coremltools.source_dialect" : "TorchScript"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32 1 × 1 × 80 × 298)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 80, 298]",
+        "name" : "osd_input",
+        "type" : "MultiArray"
+      }
+    ],
+    "generatedClassName" : "osd_model",
+    "method" : "predict"
+  }
+]

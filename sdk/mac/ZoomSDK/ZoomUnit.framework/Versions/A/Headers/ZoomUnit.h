@@ -1,0 +1,284 @@
+//
+//  ZoomUnit.h
+//  ZoomUnit
+//
+//  Created by Francis Zhuo on 6/22/21.
+//
+
+#import <Foundation/Foundation.h>
+// In this header, you should import all the public headers of your framework using statements like #import <ZoomUnit/PublicHeader.h>
+
+//Bridge
+#import <ZoomUnit/ZMPPTDataProtocol.h>
+#import <ZoomUnit/ZMPConfDataProtocol.h>
+#import <ZoomUnit/ZPUICommonDef.h>
+#import <ZoomUnit/ZMInteractiveEnum.h>
+#import <ZoomUnit/ZMLanguageManager.h>
+#import <ZoomUnit/ZPLanguageForCookie.h>
+#import <ZoomUnit/ZMPTMgrInterface.h>
+
+//Logging
+#import <ZoomUnit/IZMLoggingMgr.h>
+
+//Button
+#import <ZoomUnit/ZMSegmentedControl.h>
+
+//Capture
+#import <ZoomUnit/ZMCaptureHelper.h>
+#import <ZoomUnit/ZMCaptureModel.h>
+
+//Chat
+#import <ZoomUnit/ZMFileConstants.h>
+#import <ZoomUnit/ZMChatButton.h>
+#import <ZoomUnit/ZMChatDispalySizeNotifyView.h>
+
+//CountryView
+#import <ZoomUnit/ZMAudioCountryView.h>
+
+//Date
+#import <ZoomUnit/ZMCalendarWindowController.h>
+#import <ZoomUnit/ZMDatePicker.h>
+#import <ZoomUnit/ZMHDatePicker.h>
+#import <ZoomUnit/ZMDatePickerDropdownView.h>
+
+//Download
+#import <ZoomUnit/ZMDownloader.h>
+#import <ZoomUnit/ZMOndemandProtocol.h>
+
+//preview
+//#import <ZoomUnit/ZMVideoPreViewItem.h>
+//#import <ZoomUnit/ZMPreviewVideoItemView.h>
+//#import <ZoomUnit/ZMFilePreViewItem.h>
+//#import <ZoomUnit/ZMFilePreviewManager.h>
+//#import <ZoomUnit/ZMImagePreViewItem.h>
+//#import <ZoomUnit/ZMPreviewBaseItemView.h>
+//#import <ZoomUnit/ZMPreviewContentView.h>
+//#import <ZoomUnit/ZMPreviewImageItemView.h>
+
+//Formatter
+#import <ZoomUnit/ZMFormatTextField.h>
+#import <ZoomUnit/ZPMaxLengthFormatter.h>
+#import <ZoomUnit/ZPMeetingNumberAndRoomNameFormatter.h>
+
+//ImageView
+#import <ZoomUnit/ZMGIFImageView.h>
+#import <ZoomUnit/ZMPTRoundImageView.h>
+#import <ZoomUnit/ZPAvatarLoader.h>
+
+//Menu
+#import <ZoomUnit/ZMCMenu.h>
+#import <ZoomUnit/ZMCustomMenu.h>
+
+//Other
+#import <ZoomUnit/NSView+Create.h>
+#import <ZoomUnit/ZMFileCopyMgr.h>
+#import <ZoomUnit/IZMLottieProtocol.h>
+#import <ZoomUnit/ZMMenuItemProtocol.h>
+
+//Sip
+#import <ZoomUnit/ZMSipContactItemProtocol.h>
+#import <ZoomUnit/ZMSipLanguageListProtocol.h>
+#import <ZoomUnit/ZMSipCallProtocol.h>
+#import <ZoomUnit/ZMSipNumberFormat.h>
+#import <ZoomUnit/ZMSipEntityCallerID.h>
+#import <ZoomUnit/ZMSipRingtoneCallerIDSettings.h>
+
+//Popover
+#import <ZoomUnit/ZMTipWindow.h>
+#import <ZoomUnit/ZMPopoverManager.h>
+#import <ZoomUnit/ZMPopupTipWindow.h>
+#import <ZoomUnit/ZMPopoverController.h>
+#import <ZoomUnit/ZMPopupSelectViewController.h>
+#import <ZoomUnit/ZMPopupAlertViewController.h>
+#import <ZoomUnit/ZMBlockAlert.h>
+#import <ZoomUnit/ZMDialogue.h>
+#import <ZoomUnit/ZMAlertObject.h>
+#import <ZoomUnit/ZPAlert.h>
+#import <ZoomUnit/ZMTableViewMenu.h>
+#import <ZoomUnit/ZMPTAlertType.h>
+
+//ShareSelect
+#import <ZoomUnit/ZMSharePaddingMgr.h>
+#import <ZoomUnit/ZMShareUnSharingTipMgr.h>
+#import <ZoomUnit/ZMSharePaddingWindow.h>
+#import <ZoomUnit/ZMShareSelectDef.h>
+#import <ZoomUnit/ZMShareSelectWindow.h>
+#import <ZoomUnit/ZPShareSelectCollectionView.h>
+#import <ZoomUnit/ZPShareSelectCollectionViewItem.h>
+#import <ZoomUnit/ZPShareSelectWindowModel.h>
+
+//Slider
+#import <ZoomUnit/ZMProgressIndicator.h>
+#import <ZoomUnit/ZMProgressView.h>
+
+//TableView
+#import <ZoomUnit/ZMBaseTableCellView.h>
+#import <ZoomUnit/ZMTableViewUtilCellView.h>
+#import <ZoomUnit/ZMNOutlineView.h>
+#import <ZoomUnit/ZMTableView.h>
+#import <ZoomUnit/ZMTabView.h>
+
+//TextVeiw
+#import <ZoomUnit/ZMSearchTextView.h>
+#import <ZoomUnit/ZPKeyupSecureTextField.h>
+#import <ZoomUnit/ZPKeyupTextField.h>
+#import <ZoomUnit/ZMSecureTextField.h>
+#import <ZoomUnit/ZMSecureInputView.h>
+#import <ZoomUnit/ZMLabelIconTextView.h>
+
+//Util
+#import <ZoomUnit/ZMAuthentication.h>
+#import <ZoomUnit/ZMMetalHelper.h>
+#import <ZoomUnit/ZMWindowHelper.h>
+
+
+//ZMGiftPanel
+#import <ZoomUnit/ZMGiftPanel.h>
+
+////ZMMessage
+//#import <ZoomUnit/ZMMessageEntity.h>
+//#import <ZoomUnit/ZMMessageItemInfo.h>
+//#import <ZoomUnit/ZMPTGiphyData.h>
+//#import <ZoomUnit/ZMPinMessageInfo.h>
+//#import <ZoomUnit/ZMReactionEmojiInfo.h>
+//#import <ZoomUnit/ZMAnimationAndErrorView.h>
+#import <ZoomUnit/ZMAssignedGroupResult.h>
+//
+////ZMMessage View
+//#import <ZoomUnit/ZMBaseMessageCellView.h>
+//#import <ZoomUnit/ZMBubbleMessageCellView.h>
+//#import <ZoomUnit/ZMNTextMessageCellView.h>
+//#import <ZoomUnit/ZMPromptMessageCellView.h>
+//#import <ZoomUnit/ZMImageMessageCellView.h>
+//#import <ZoomUnit/ZMGiphyMessageCellView.h>
+//#import <ZoomUnit/ZMCodeMessageCellView.h>
+//#import <ZoomUnit/ZMMessageAccessoryView.h>
+//#import <ZoomUnit/ZMMessageBubbleView.h>
+//#import <ZoomUnit/ZMMessageCellViewDelegate.h>
+//#import <ZoomUnit/ZMMessageCellViewFactory.h>
+//#import <ZoomUnit/ZMMessageLayoutManager.h>
+//#import <ZoomUnit/ZMReactionItemView.h>
+//#import <ZoomUnit/ZMAvatarView.h>
+
+//ZMEditAvatar
+#import <ZoomUnit/ZMEditAvatarPanel.h>
+
+////ZMVideoPlayer
+//#import <ZoomUnit/ZMVideoPlayerView.h>
+//#import <ZoomUnit/ZMVideoPlayerControlView.h>
+
+//input
+//#import <ZoomUnit/ZMChatsInputFileView.h>
+//RTF
+#import <ZoomUnit/ZMRTFCopyManager.h>
+
+//baseview
+#import <ZoomUnit/ZMWebViewEssentials.h>
+
+//Zoom Apps
+#import <ZoomUnit/ZMZAppToastView.h>
+#import <ZoomUnit/ZPZAppAdapter.h>
+#import <ZoomUnit/ZMMTPopOutWindow.h>
+#import <ZoomUnit/ZMZappPTProtocol.h>
+#import <ZoomUnit/ZMZappConfProtocol.h>
+#import <ZoomUnit/ZMZappVirtualEffectsProtocol.h>
+#import <ZoomUnit/ZMZappStatusProtocol.h>
+#import <ZoomUnit/IZMZappAppTabs.h>
+#import <ZoomUnit/ZMZappInstanceEventsProtocol.h>
+
+
+//SidePanel
+#import <ZoomUnit/ZMSidePanelViewController.h>
+#import <ZoomUnit/ZMSidePanelItem.h>
+#import <ZoomUnit/ZMSidePanelBaseHeadView.h>
+
+//ProfileFloat
+#import <ZoomUnit/ZMProfileConfig.h>
+#import <ZoomUnit/ZMMTVCardCallProtocol.h>
+
+//Mail
+#import <ZoomUnit/ZPZMailAdapter.h>
+
+#import <ZoomUnit/ZMAnimationAndErrorView.h>
+//ExtendMeeting
+#import <ZoomUnit/ZMExtendMeetingBasicPlusCredits.h>
+#import <ZoomUnit/ZMEmojiModelProtocal.h>
+
+//IPC
+#import <ZoomUnit/ZMIPCProtocol.h>
+#import <ZoomUnit/ZMIPCMessage.h>
+
+//XProcEvent (cross-process URL relay between Meeting and PT)
+#import <ZoomUnit/ZMXProcEventBus.h>
+
+//XProcEvent global-notification relay built on ZMXProcEventBus
+#import <ZoomUnit/ZMXProcEventDefines.h>
+#import <ZoomUnit/ZMXProcEventPoster.h>
+
+//Cached value with direct, uniquely addressed cross-process reads.
+#import <ZoomUnit/ZMXProcValue.h>
+
+//ZMThemeMgr
+#import <ZoomUnit/IZMMTTheme.h>
+#import <ZoomUnit/IZMThemeMgr.h>
+
+//MeetingSDK
+#import <ZoomUnit/IZoomSDKMemoryHelper.h>
+
+#import <ZoomUnit/ZMBuddyUpdateProtocol.h>
+#import <ZoomUnit/IZMMTVideoProtocol.h>
+#import <ZoomUnit/ZMMTAudioProtocol.h>
+#import <ZoomUnit/ZMMTRecordProtocol.h>
+#import <ZoomUnit/IZMAudioSettingViewProtocol.h>
+#import <ZoomUnit/IZMSpacesZRServiceHubHelper.h>
+#import <ZoomUnit/ZMLoginProtocol.h>
+#import <ZoomUnit/ZMInviteProtocol.h>
+#import <ZoomUnit/ZZHostHIDControlProtocol.h>
+#import <ZoomUnit/IZMMTUserChatProtocol.h>
+#import <ZoomUnit/IZMDeviceProtocol.h>
+#import <ZoomUnit/ZMMeetingProtocol.h>
+#import <ZoomUnit/ZMMeetingStatusProtocol.h>
+#import <ZoomUnit/ZMMemLogAdapter.h>
+#import <ZoomUnit/ZMZUISettingProtocol.h>
+
+#import <ZoomUnit/ZMAlertPanel.h>
+#import <ZoomUnit/ZMGroupedElementOnlyImageButton.h>
+#import <ZoomUnit/ZMIMOnlyImageButton.h>
+#import <ZoomUnit/PZPTrackingButton.h>
+#import <ZoomUnit/ZMNewTooltipMgr.h>
+#import <ZoomUnit/ZMBaseAvatarView.h>
+#import <ZoomUnit/ZMBandWidthInfo.h>
+
+//Extension
+#import <ZoomUnit/NSString+ZoomUnit.h>
+#import <ZoomUnit/NSApplication+ZoomUnit.h>
+#import <ZoomUnit/ZMHotkeyConfiguration+ZoomUnit.h>
+#import <ZoomUnit/ZMTerminateProtocol.h>
+#import <ZoomUnit/ZMDeepLinkAdapter.h>
+#import <ZoomUnit/ZMBannerType.h>
+#import <ZoomUnit/ZMInClientTypeView.h>
+#import <ZoomUnit/IZMPTAlertMgr.h>
+#import <ZoomUnit/ZMPTAlertMgr.h>
+#import <ZoomUnit/ZMScreenShotItem.h>
+#import <ZoomUnit/ZMScreenshotCallback.h>
+#import <ZoomUnit/ZMReportWindowAdapter.h>
+#import <ZoomUnit/ZMCache.h>
+#import <ZoomUnit/ZMLRUCache.h>
+
+//Debug
+#import <ZoomUnit/ZMDebugToolProtocol.h>
+#import <ZoomUnit/ZPLogHelper.h>
+
+#import <ZoomUnit/ZMAppReopenProtocol.h>
+#import <ZoomUnit/CmmModuleProtocol.h>
+#import <ZoomUnit/ZMMicrophoneUsageInfo.h>
+#import <ZoomUnit/IZMVoiceNotesMgr.h>
+#import <ZoomUnit/IZMStatusBarMgr.h>
+#import <ZoomUnit/IZMInviteChatUIProtocol.h>
+#import <ZoomUnit/IZMWallpaperDownloadProtocol.h>
+#import <ZoomUnit/ZPCMDWindowProtocol.h>
+#import <ZoomUnit/ZMHTextField.h>
+#import <ZoomUnit/ZMAVPlayerView.h>
+
+//URLInvocation
+#import <ZoomUnit/ZMURLInvocation.h>

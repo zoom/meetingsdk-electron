@@ -1,0 +1,46 @@
+{
+  "name": "zoom-electron-meeting-sdk",
+  "version": "7.2.1",
+  "author": "zoom",
+  "description": "electron-meeting-sdk-demo",
+  "scripts": {
+    "install": "node -e \"process.exit(0)\"",
+    "electron:build": "node scripts/electron_sdk_build.js",
+    "electron:serve": "node scripts/electron_sdk_serve.js",
+    "electron:buildNode": "node scripts/electron_sdk_buildNode.js"
+  },
+  "main": "dist_electron/main/index.js",
+  "dependencies": {
+    "@electron/remote": "^2.1.3",
+    "@element-plus/icons-vue": "^2.3.2",
+    "element-plus": "^2.14.0",
+    "google-protobuf": "^3.21.4",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.34",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.5.26",
+    "css-loader": "^7.1.2",
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3",
+    "html-webpack-plugin": "^5.6.5",
+    "mini-css-extract-plugin": "^2.9.4",
+    "native-ext-loader": "^2.3.0",
+    "path-browserify": "^1.0.1",
+    "sass": "^1.97.2",
+    "sass-loader": "^16.0.6",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.16",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "vue-loader": "^17.4.2",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

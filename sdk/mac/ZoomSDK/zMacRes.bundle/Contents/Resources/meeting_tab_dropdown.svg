@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" fill="#FFFFFF00" rx="8"/>
+<path clip-rule="evenodd" d="M21.0008 13.18187C21.3143 12.83743 21.8482 12.81249 22.1929 13.12584C22.5373 13.43934 22.5622 13.97318 22.2489 14.31785L16.62388 20.5054C16.46399 20.681 16.23741 20.7811 15.99986 20.7811C15.76231 20.7811 15.53573 20.681 15.37584 20.5054L9.75084 14.31785C9.43749 13.97318 9.46243 13.43934 9.80687 13.12584C10.15155 12.81249 10.68538 12.83743 10.99888 13.18187L15.99986 18.6827L21.0008 13.18187Z" fill="#2A2B2D" fill-rule="evenodd"/>
+<zoom style="dark" value=":none||:#F7F9FA"/>
+<zoom style="hover" value=":none|:#6E76801F|:#2A2B2D"/>
+<zoom style="hover_dark" value=":none|:#FFFFFF1A|:#F7F9FA"/>
+<zoom style="press" value=":none|:#6E76803D|:#2A2B2D"/>
+<zoom style="press_dark" value=":none|:#ffffff33|:#F7F9FA"/>
+<zoom style="selected" value=":none|:#6E76801F|:#2A2B2D"/>
+<zoom style="selected_dark" value=":none|:#ffffff33|:#F7F9FA"/>
+</svg>

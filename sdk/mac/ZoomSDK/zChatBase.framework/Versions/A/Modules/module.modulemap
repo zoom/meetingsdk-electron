@@ -1,0 +1,6 @@
+framework module zChatBase {
+  umbrella header "zChatBase.h"
+  export *
+
+  module * { export * }
+}

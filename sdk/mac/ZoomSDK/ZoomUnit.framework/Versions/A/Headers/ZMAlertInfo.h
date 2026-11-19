@@ -1,0 +1,108 @@
+//
+//  ZMAlertInfo.h
+//  zChatUI
+//
+//  Created by fistice on 7/29/25.
+//  Copyright © 2025 Zoom. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <Prism/Prism.h>
+#import <Prism/Prism-Swift.h>
+#ifdef __cplusplus
+struct CmmZpnsToast_s;
+typedef struct CmmZpnsToast_s CmmZpnsToast;
+struct CmmZpnsCoachmark_s;
+typedef struct CmmZpnsCoachmark_s CmmZpnsCoachmark;
+#endif
+
+
+typedef NS_ENUM(NSUInteger, ZMAlertType) {
+    ZMAlertTypeToast,
+    ZMAlertTypeBubble,
+    ZMAlertTypeDialog,
+    ZMAlertTypeBanner,
+    ZMAlertTypeHudToast,
+};
+typedef NS_ENUM(NSUInteger, ZMAlertButtonType) {
+    ZMAlertButtonTypeNone,
+    ZMAlertButtonTypeLink,
+    ZMAlertButtonTypeDeepLink,
+    ZMAlertButtonTypeOpenAICPanel,
+    ZMAlertButtonTypeServiceHub,
+    ZMAlertButtonTypeCustom
+};
+typedef NS_ENUM(NSUInteger, ZMAlertButtonPosition) {
+    ZMAlertButtonPositionNone,
+    ZMAlertButtonPositionPrimary,
+    ZMAlertButtonPositionSecondary,
+    ZMAlertButtonPositionLeftLink,
+    ZMAlertButtonPositionClose,
+};
+NS_ASSUME_NONNULL_BEGIN
+@interface ZMAlertButtonInfo : NSObject
+@property (nonatomic,copy) NSString *title;
+@property (nonatomic,assign) ZMAlertButtonType type;
+@property (nonatomic,copy) NSString *content;
+@property (nonatomic,assign) ZMAlertButtonPosition position;
+
+@property (nonatomic,weak) id target;
+@property (nonatomic,assign) SEL action;
+
+//using in toast
+@property (nonatomic,assign) BOOL closeAfterAction;//default is true
+@property (nonatomic,copy) void (^customerAction)(void);
+@end
+
+@interface ZMAlertInfo : NSObject
+
+#ifdef __cplusplus
+/*
+"type": "toast/coachmark",
+"businessType":"pt/in-meeting",
+
+ */
+- (instancetype)initWithZPNSToastInfo:(const CmmZpnsToast&)obj;
+- (instancetype)initWithZPNSBubbleInfo:(const CmmZpnsCoachmark&)obj;
+#endif
+
+@property (nonatomic,copy) NSString *identifier;
+@property (nonatomic,copy) NSString *title;
+@property (nonatomic,copy) NSString *information;
+@property (nonatomic,strong) ZMAlertButtonInfo *primaryBtn;
+@property (nonatomic,strong) ZMAlertButtonInfo *secondaryBtn;
+@property (nonatomic,strong) ZMAlertButtonInfo *leftLinkBtn;
+
+@property (nonatomic,assign) BOOL isCoachmark;
+@property (nonatomic,copy) NSString *coachmarkID;
+@property (nonatomic,assign) NSUInteger coachmarkPriority;
+@property (nonatomic,copy) NSString *entry;
+@property (nonatomic,copy) NSString *group;
+
+@property (nonatomic,assign) BOOL isShowClose;
+@property (nonatomic,assign) ZMToastType iconType;
+@property (nonatomic,copy) NSString *iconTitle;
+@property (nonatomic,assign) ZMAlertType displayType;
+
+@property (nonatomic,assign) BOOL needRequestShownCount;
+@property (nonatomic,copy) NSString *displayEventType;
+@property (nonatomic,copy) NSString *dismissEventType;
+
+@property (nonatomic,strong) NSImage *image;
+
+@property (nonatomic,assign) BOOL needAppendMtUUIdInURL;
+
+@property (nonatomic,copy) NSString *minVersion;
+@property (nonatomic,copy) NSString *maxVersion;
+@property (nonatomic,assign) NSUInteger maxShowCount;
+@property (nonatomic,assign) BOOL showForNewUser;
+
+// Dismiss timer from CmmZpnsNoticeDismiss.timer (milliseconds)
+@property (nonatomic,assign) int64_t dismissTimer;
+
+- (BOOL)isECMSCoachmark;
+- (void)assign:(ZMAlertInfo *)info;
+@end
+
+
+NS_ASSUME_NONNULL_END

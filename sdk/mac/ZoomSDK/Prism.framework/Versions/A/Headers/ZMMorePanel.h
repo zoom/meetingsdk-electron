@@ -1,0 +1,148 @@
+//
+//  ZMMorePanel.h
+//  PTUIBridge
+//
+//  Created by Cursor on 10/17/2025.
+//  Copyright © 2025 Zipow. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import <Prism/ZMBaseView.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+#define ZM_MORE_PANEL_MAX_HEIGHT 500.0
+
+@class ZMMorePanel;
+@protocol ZMMorePanelKeyDownDelegate <NSObject>
+@optional
+/// Handle key down event, return YES if handled, NO to pass to super
+- (BOOL)handleKeyDown:(NSEvent *)event;
+
+- (BOOL)morePanel:(ZMMorePanel *)morePanel moveRight:(id)sender;
+- (BOOL)morePanel:(ZMMorePanel *)morePanel moveLeft:(id)sender;
+- (BOOL)morePanel:(ZMMorePanel *)morePanel moveUp:(id)sender;
+- (BOOL)morePanel:(ZMMorePanel *)morePanel moveDown:(id)sender;
+
+@end
+
+@class ZMTabItemData;
+
+// Block type for creating custom pasteboard items during drag
+typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMorePanelPasteboardWriterBlock)(ZMTabItemData *itemData, NSIndexPath *indexPath);
+
+@interface ZMMorePanel : ZMBaseView
+
+/// Designated initializer. Callers must use this initializer so the scroll view is
+/// configured before the panel builds its UI; do not create ZMMorePanel with init/initWithFrame:.
+- (instancetype)initWithScrolling:(BOOL)enableScrolling NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(NSRect)frameRect NS_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
+
+// Customization properties
+@property (nonatomic, copy) NSString *dragType;  // Default: @"us.zoom.maintabs"
+@property (nonatomic, assign) BOOL draggingEnabled;  // Default: YES (dragging enabled)
+@property (nonatomic, assign) BOOL showResetControl;  // Default: YES (show reset control)
+@property (nonatomic, strong) NSColor *dividerColor;
+
+// Color customization blocks
+// Pasteboard writer customization
+@property (nonatomic, copy, nullable) ZMMorePanelPasteboardWriterBlock pasteboardWriterProvider;
+
+// Empty state customization
+@property (nonatomic, strong, nullable) NSImage *emptyStateIcon;  // Icon for empty state
+@property (nonatomic, copy, nullable) NSString *emptyStateText;  // Text for empty state
+
+// Callback handlers
+@property (nonatomic, copy, nullable) void (^onResetHandler)(void);
+@property (nonatomic, copy, nullable) void (^onCellClickHandler)(ZMTabItemData *itemData);
+/// Fired when a cell is materialized for display (initial + scrolled into view).
+/// Used by hosts to lazily load per-cell resources (e.g. zApp tab icons).
+@property (nonatomic, copy, nullable) void (^onCellWillDisplayHandler)(ZMTabItemData *itemData);
+@property (nonatomic, copy, nullable) void (^onCellRightMouseClickHandler)(ZMTabItemData *itemData, NSEvent *event, NSView *cellView);
+@property (nonatomic, copy, nullable) void (^onCellsReorderedHandler)(ZMTabItemData *draggedItem, ZMTabItemData * _Nullable targetItem);
+@property (nonatomic, copy, nullable) void (^onSizeChangedHandler)(NSSize newSize);
+@property (nonatomic, copy, nullable) void (^onItemAddedFromExternalHandler)(ZMTabItemData *itemData, BOOL isPin, ZMTabItemData * _Nullable targetItem);
+@property (nonatomic, copy, nullable) void (^onItemRemovedHandler)(ZMTabItemData *itemData);
+@property (nonatomic, copy, nullable) BOOL (^shouldRemoveItemOnDragEndHandler)(NSPoint screenPoint);
+@property (nonatomic, copy, nullable) void (^onUnpinCellClickHandler)(ZMTabItemData *itemData);
+@property (nonatomic, copy, nullable) void (^onDragSessionBeginHandler)(void);
+@property (nonatomic, copy, nullable) void (^onDragSessionEndHandler)(void);
+@property (nonatomic, weak, nullable) id<ZMMorePanelKeyDownDelegate> keyDelegate;
+// Popout support callbacks
+/// Called to check if item can be popped out (returns YES if popout is supported)
+@property (nonatomic, copy, nullable) BOOL (^canPopOutItemHandler)(ZMTabItemData *itemData);
+/// Called when drag moves to a point - allows handling popout/merge logic
+/// Handler receives screenPoint, itemData, cellView, and dragging session
+@property (nonatomic, copy, nullable) void (^onDragMovedHandler)(NSPoint screenPoint, ZMTabItemData *itemData, NSImage *cellImage, NSDraggingSession *session);
+/// Returns YES if the item is currently popped out
+@property (nonatomic, copy, nullable) BOOL (^isItemPoppedOutHandler)(ZMTabItemData *itemData);
+@property (nonatomic, copy, nullable) void (^onEscKeyHandler)(void);
+
+// Banner configuration (displayed at the top of the panel using Prism BannerView)
+@property (nonatomic, assign) BOOL showBanner;
+@property (nonatomic, copy, nullable) NSString *bannerBody;
+@property (nonatomic, copy, nullable) void (^onBannerDismissHandler)(void);
+
+- (void)setTopSectionData:(NSArray<ZMTabItemData *> *)dataArray;
+- (void)setBottomSectionData:(NSArray<ZMTabItemData *> *)dataArray;
+- (void)cancelIncomingDragPreview;
+
+/// Content size computed in -updateLayout; use instead of -frame when the panel is a window contentView (AppKit pins -frame to the old window rect).
+@property (nonatomic, readonly) NSSize contentFitSize;
+
+- (NSArray<ZMTabItemData *> *)topSectionData;
+- (NSArray<ZMTabItemData *> *)bottomSectionData;
+
+- (void)updateLayout;
+
+// Reload/Remove/Add methods for pinned items
+- (void)reloadItem:(ZMTabItemData *)item;
+- (void)reloadTopItems:(NSArray<NSString *> *)itemIDs;
+- (void)removeTopItems:(NSArray<NSString *> *)itemIDs;
+- (void)addTopItems:(NSArray<ZMTabItemData *> *)items;
+
+// Reload/Remove/Add methods for unpinned items
+- (void)reloadBottomItems:(NSArray<NSString *> *)itemIDs;
+- (void)removeBottomItems:(NSArray<NSString *> *)itemIDs;
+- (void)addBottomItems:(NSArray<ZMTabItemData *> *)items;
+
+// Reload all data
+- (void)reloadAll;
+
+#pragma mark - Accessibility Focus Management
+
+// Focus the first item in the panel
+- (void)focusFirstItem;
+
+// Focus the reset control
+- (void)focusResetControl;
+
+// Focus a specific item by identifier
+- (BOOL)focusItemWithIdentifier:(NSString *)identifier;
+
+// Get currently focused item data (nil if reset control is focused)
+- (nullable ZMTabItemData *)focusedItemData;
+
+#pragma mark - Arrow Key Handlers
+
+- (void)handleLeftArrowKey;
+
+- (void)handleRightArrowKey;
+
+- (void)handleUpArrowKey;
+
+- (void)handleDownArrowKey;
+
+- (void)handleTabKey;
+
+- (void)activateFocusedItem;
+
+// Trigger context menu on focused item (Shift+F10)
+- (void)triggerContextMenuOnFocusedItem;
+
+@end
+
+NS_ASSUME_NONNULL_END

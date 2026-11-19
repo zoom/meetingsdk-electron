@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="5" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="10" y="5" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="15" y="5" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="5" y="10" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="10" y="10" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="15" y="10" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="5" y="15" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="10" y="15" width="4" height="4" rx="1" fill="#222325"/>
+    <rect x="15" y="15" width="4" height="4" rx="1" fill="#222325"/>
+    <zoom style="dark" value="|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4|:#C4C4C4"/>
+    <zoom style="selected" value="|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7|:#4F9AF7"/>
+</svg>

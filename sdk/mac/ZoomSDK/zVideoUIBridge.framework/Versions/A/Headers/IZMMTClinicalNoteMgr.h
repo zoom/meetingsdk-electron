@@ -1,0 +1,62 @@
+//
+//  IZMMTClinicalNoteMgr.h
+//  VideoUIBridge
+//
+//  Created by Karen Cao on 12/10/24.
+//
+
+#ifndef IZMMTClinicalNoteMgr_h
+#define IZMMTClinicalNoteMgr_h
+
+/**
+ * @router ZMMTShared
+ */
+@protocol IZMMTClinicalNoteMgr <ZMRoutableObject>
+
+@optional
+- (void)onReceiveSwitchClinicalNoteRequestMsg:(NSString *)reqId senderId:(ZMUserID)senderId switchAction:(NSInteger)switchAction;
+- (void)onReceiveSwitchClinicalNoteResponseMsg:(BOOL)timeout isDecline:(BOOL)decline switchAction:(NSInteger)switchAction;
+- (void)onClinicalNoteStatusChanged;
+- (void)onTurnOnButtonClicked;
+- (void)onTurnOffButtonClicked;
+- (void)onTurnOffNotifierButtonClicked;
+- (void)showAttendeeRequestTurnOffPanelIfNeed;
+- (void)onPauseButtonClicked;
+- (void)onResumeButtonClicked;
+- (void)startClinicalNote;
+- (void)stopClinicalNote;
+- (void)pauseClinicalNote;
+- (ZMBaseView *)getContentView;
+- (BOOL)isUrlEmpty;
+- (void)onPatientDataPanelHidden:(BOOL)isDataWindowVisible;
+- (void)loadView;
+
+- (BOOL)isPatientDataSidepanelShowing;
+- (void)openPatientDataSidepanel;
+- (void)closePatientDataSidepanel;
+- (void)popupWindowEnabled:(BOOL)enable;
+- (BOOL)isPopupWindowEnabled;
+- (BOOL)needRestorePatientDataPanel;
+- (void)onClinicalNoteGetCommonConfigs:(NSString *)jsCallId;
+
+- (void)onPopOutPatientDataPanel;
+- (void)onPopInPatientDataPanel;
+- (void)onClosePanelDataPanel;
+- (void)notifyPatientDataPanelLayoutToWebIfNeeded;
+@end
+
+/**
+ * @poster ZMMTEventPoster
+ */
+@protocol IZMMTClinicalNoteEvent <NSObject>
+
+@optional
+- (void)onReceiveSwitchClinicalNoteRequestMsg:(NSString *)reqId senderId:(ZMUserID)senderId switchAction:(NSInteger)switchAction;
+- (void)onReceiveSwitchClinicalNoteResponseMsg:(BOOL)timeout isDecline:(BOOL)decline switchAction:(NSInteger)switchAction;
+- (void)onCreateClinicalNoteSessionFailed:(NSInteger)errCode;
+- (void)onAICompanionTokenReceived:(BOOL)isSuccess reqId:(NSString*)reqId token:(NSString *)token;
+
+@end
+
+#endif /* IZMMTClinicalNoteMgr_h */
+

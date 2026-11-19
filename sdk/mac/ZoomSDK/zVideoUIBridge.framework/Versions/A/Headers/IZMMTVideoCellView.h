@@ -1,0 +1,47 @@
+//
+//  IZMMTVideoCellView.h
+//  VideoUI
+//
+//  Created by martin.yu on 9/14/22.
+//  Copyright © 2022 zoom.us. All rights reserved.
+//
+
+#ifndef IZMMTVideoCellView_h
+#define IZMMTVideoCellView_h
+
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol IZMMTVideoCellView;
+@protocol ZMMTVideoCellViewDelegate <ZMMTBaseVideoCellViewDelegate>
+@optional
+- (BOOL)enableShowButtonsForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowMuteButtonForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowMinimizeSelfViewButtonForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowLiveTagForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowProducerLiveTagForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+
+// Top tip bar - Attendee view / My camera
+- (BOOL)enableShowAttendeeViewTipForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowMyCameraTipForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+
+@end
+
+@class PZMMenu;
+@protocol IZMMTVideoCellView <ZMRoutableObject>
+@property (nonatomic, weak) id<ZMMTVideoCellViewDelegate> delegate;
+@property (nonatomic, nullable, retain) PZMMenu* moreMenu;
+- (BOOL)enableShowMoreButton;
+
+@optional
+// The cell's hover-button hooks, implemented in ZMMTVideoCellView+VideoUI.mm:
+// -updateButtonUI decides which buttons show, then hands off to
+// -relayoutButtonUI for their placement. Declared here so subclasses that add
+// buttons of their own can override them and still reach super -- optional,
+// since cells that don't have a button row have nothing to implement.
+- (void)updateButtonUI;
+- (void)relayoutButtonUI;
+@end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* IZMMTVideoCellView_h */

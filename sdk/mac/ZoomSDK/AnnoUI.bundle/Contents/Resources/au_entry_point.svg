@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- background Pie -->
+  <circle cx="24" cy="24" r="23.25" fill="#EEEFF0"/>
+
+  <!-- Circle Border -->
+  <circle cx="24" cy="24" r="23.25" stroke="#939BA4" stroke-width="1.5"/>
+
+  <!-- Pen Path -->
+  <path transform="translate(2,3.0)" fill-rule="evenodd" clip-rule="evenodd"
+    d="M31.2198 15.1085C31.7574 15.6448 31.7574 16.5143 31.2198 17.0505L18.4406 29.7964C18.1824 30.0539 17.8322 30.1986 17.4671 30.1986H13.0634C12.6832 30.1986 12.375 29.8912 12.375 29.512V25.1198C12.375 24.7556 12.5201 24.4063 12.7783 24.1487L25.5574 11.4029C26.0951 10.8667 26.9668 10.8667 27.5045 11.4029L31.2198 15.1085ZM26.5309 12.3739L30.2462 16.0795L27.7334 18.5858L24.0229 14.8754L26.5309 12.3739ZM23.0494 15.8464L26.7598 19.5568L17.4671 28.8254H13.7518L13.7518 25.1198L23.0494 15.8464Z"
+    fill="#2AA152"/>
+
+  <!-- Dark mode normal -->
+  <zoom style="dark" value="|:#0D0E0F|#939BA4:|:#2AA152"/>
+  <!-- Light mode hover -->
+  <zoom style="hover" value="|:#2AA152|#939BA4:|:#FFFFFF"/>
+  <!-- Dark mode hover -->
+  <zoom style="hover_dark" value="|:#2AA152|#939BA4:|:#131619"/>
+
+</svg>

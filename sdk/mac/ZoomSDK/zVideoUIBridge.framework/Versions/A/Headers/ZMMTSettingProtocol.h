@@ -1,0 +1,48 @@
+//
+//  ZMMTSettingProtocol.h
+//  VideoUI
+//
+//  Created by martin.yu on 8/17/21.
+//  Copyright © 2021 zoom.us. All rights reserved.
+//
+
+#ifndef ZMMTSettingProtocol_h
+#define ZMMTSettingProtocol_h
+
+#import <Foundation/Foundation.h>
+
+/**
+ * @router ZMShared
+ */
+@protocol ZMMTSettingProtocol <ZMRoutableObject>
+@optional
+
+- (BOOL)isImmersiveDisableVB;
+- (BOOL)shouldDisableMirror;
+
+- (void)onReactionAwareness:(BOOL)isEnable;
+
+- (void)onVideoPreviewStatusChanged;
+
+- (void)onVideoMaxParticipantsStatusChanged;
+- (void)lipsyncStatusNeedChange;
+
+- (void)onLottieStatusChanged:(BOOL)isEnable;
+
+- (void)onCaptionColorChanged:(NSColor *)color;
+- (void)onTranslationColorChanged:(NSColor *)color;
+- (void)onBackgroundColorChanged:(NSColor *)color;
+
+- (void)openPTSettingWithType:(int)type;
+- (void)openPTSettingWithType:(int)type context:(NSDictionary *)context;
+- (void)closePTSetting;
+
+- (void)ptWindowStatusChange:(BOOL)status;
+
+- (BOOL)isVideoCutout;
+- (BOOL)isVideoEnableAlphaMask;
+
+- (BOOL)canZoomDisplayFontSize;
+@end
+
+#endif /* ZMMTSettingProtocol_h */

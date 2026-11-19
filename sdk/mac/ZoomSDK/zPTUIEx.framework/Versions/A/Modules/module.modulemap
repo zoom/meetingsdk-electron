@@ -1,0 +1,11 @@
+framework module zPTUIEx {
+  umbrella header "zPTUIEx.h"
+  export *
+
+  module * { export * }
+}
+
+module zPTUIEx.Swift {
+  header "zPTUIEx-Swift.h"
+  requires objc
+}
